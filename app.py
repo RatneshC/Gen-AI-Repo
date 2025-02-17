@@ -105,7 +105,7 @@ if submit:
     response=get_app_response(question,prompt)
     print(response)
     response=readData_sql_query(response,"student.db")
-    st.subheader("The REsponse is")
+    st.subheader("The App response is::")
     for row in response:
         print(row)
         st.header(row)
