@@ -30,7 +30,7 @@ import google.generativeai as genai
 # In[5]:
 
 
-genai.configure(api_key="AIzaSyAlTbZ1qTh6AW5Zi017yEWF_0sXykionvs")
+genai.configure(api_key="zaSyAlTbZ1qTh6AW5Zi017yEWF_0sXykionvs")
 
 
 # In[ ]:
@@ -42,7 +42,7 @@ genai.configure(api_key="AIzaSyAlTbZ1qTh6AW5Zi017yEWF_0sXykionvs")
 # In[6]:
 
 
-def get_gemini_response(question,prompt):
+def get_app_response(question,prompt):
     model=genai.GenerativeModel('gemini-pro')
     response=model.generate_content([prompt[0],question])
     return response.text
@@ -51,7 +51,7 @@ def get_gemini_response(question,prompt):
 # In[7]:
 
 
-def read_sql_query(sql,db):
+def readData_sql_query(sql,db):
     conn=sql.connect(db)
     cur=conn.cursor(sql)
     rows=cur.fetchall()
@@ -61,20 +61,6 @@ def read_sql_query(sql,db):
         print(row)
     return rows
 
-
-# In[8]:
-
-
-def read_sql_query(sql,db):
-    conn=sqlite3.connect(db)
-    cur=conn.cursor()
-    cur.execute(sql)
-    rows=cur.fetchall()
-    conn.commit()
-    conn.close()
-    for row in rows:
-        print(row)
-    return rows
 
 
 # In[9]:
@@ -116,9 +102,9 @@ submit=st.button("Ask the question")
 
 # if submit is clicked
 if submit:
-    response=get_gemini_response(question,prompt)
+    response=get_app_response(question,prompt)
     print(response)
-    response=read_sql_query(response,"student.db")
+    response=readData_sql_query(response,"student.db")
     st.subheader("The REsponse is")
     for row in response:
         print(row)
