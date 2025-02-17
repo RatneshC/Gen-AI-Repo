@@ -104,7 +104,7 @@ prompt=[
 ## Streamlit App
 
 st.set_page_config(page_title="I can Retrieve Any SQL query")
-st.header("Gemini App To Retrieve SQL Data")
+st.header("App To Retrieve SQL Data")
 
 question=st.text_input("Input: ",key="input")
 
